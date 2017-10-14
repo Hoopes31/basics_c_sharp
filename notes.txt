@@ -1,0 +1,5 @@
+Checks memory location:
+A.Equals(B) with A and B being the respective variables
+
+String interpolation:
+Console.WriteLine($"The value of 2 + 2 is {1+3}")
