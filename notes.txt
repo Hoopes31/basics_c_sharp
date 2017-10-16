@@ -1,5 +1,36 @@
+Overall Structure:
+C# code can only see other code written within the same class by default.
+
+Functions
+First, the function must be placed outside of the Main function, but still inside the Program class.
+C# does not support embedding of functions so the new function we add must be separate.
+    Once built however the new function can be run by calling its name inside the Main 
+    function and passing in the necessary input.
+
+Public vs Private
+Public functions are avaiable to any part of the program that can see it.
+Private can only be called from within the same scope as the definition. 
+
+Static
+Static function can be called within the scope of its definition or by calling it on the class it's defined in.
+A non-static method has to be called on an instance of an object. 
+
+Void
+Void is a keyword that signifies that the function has no return. 
+If we want to return something, put the type there.
+
 Checks memory location:
 A.Equals(B) with A and B being the respective variables
 
-String interpolation:
+String interpolation
 Console.WriteLine($"The value of 2 + 2 is {1+3}")
+
+Type Conversion
+Explicit casting:
+    int num = 2;
+    float numAsFloat = (float)num
+    // Value equals 2.0
+Explicit casting with built method: 
+    int num = 2;
+    string numToString = num.ToString();
+    //Value equals "2"
