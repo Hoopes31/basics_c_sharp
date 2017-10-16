@@ -1,0 +1,14 @@
+Windows used to own the world of development. They built a framework for developers in house. When they realized this was a bad idea and the internet doesn't work that way, they started implimenting otherways for people to interact with their performant lower level language. 
+
+The following show framework developments from oldest to newest
+
+.net framework
+ASP.net -> BaseClassLibrary -> CLI -> Runtime
+
+Xamarin
+Monoclass library: Talks to IOS/Mobile but Runs On Windows Speed
+MonoClass -> CLI
+
+ASP.Net Core -> .NetCore Library -> CLI
+
+
