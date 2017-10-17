@@ -34,3 +34,17 @@ Explicit casting with built method:
     int num = 2;
     string numToString = num.ToString();
     //Value equals "2"
+
+Dictionaries
+ The type of both the key and the value stored at that key must be 
+ specified when initializing a dictionary as such: Dictionary<TKey, TValue>
+  What type inference does is allows you to not have to directly type the type 
+  for the variable, but rather will cause the variable to INFER what the type will 
+  be based on the very first value assigned to it
+
+ Dictionary<string,string> profile = new Dictionary<string,string>();
+
+ foreach (KeyValuePair<string,string> entry in profile)
+{
+ Console.WriteLine(entry.Key + " - " + entry.Value);
+}
