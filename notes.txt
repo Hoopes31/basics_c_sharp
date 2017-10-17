@@ -19,6 +19,21 @@ Void
 Void is a keyword that signifies that the function has no return. 
 If we want to return something, put the type there.
 
+Object Oriented Programing
+
+Classes define what objects we can build, how we can interact with 
+them, and how they themselves interact with our program
+Constructors are functions that exist to "construct" instances of a class.
+A constructor is called the moment an object is created using the new keyword.
+
+Get Set OOP
+
+private _numPassengers = 5;
+public int numPassengers {
+ get { return _numPassengers }
+ set { _numPassengers = value; }
+}
+
 Checks memory location:
 A.Equals(B) with A and B being the respective variables
 
