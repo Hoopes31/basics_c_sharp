@@ -34,6 +34,11 @@ public int numPassengers {
  set { _numPassengers = value; }
 }
 
+Inheritance
+protected will be hidden and still inherited
+private will be hidden and not inherited
+public is available to program and inheritable
+
 Checks memory location:
 A.Equals(B) with A and B being the respective variables
 
