@@ -26,6 +26,29 @@ them, and how they themselves interact with our program
 Constructors are functions that exist to "construct" instances of a class.
 A constructor is called the moment an object is created using the new keyword.
 
+Abstract classes
+Are simply classes that will never be instantiated. Think of them as classes specifically for inheritable characteristics.
+
+S.O.L.I.D.
+Single Responsibility Classes => Class should have one job
+Open/Closed Extension => Make classes that are easy to subclass without changing the original class
+Liskov Substitution => Subclasses should be capable of being treated like base classes
+Interface Segregation => Don't have properties on classes that are unnecessary. Use Interfaces instead.
+Dependency Inversion => Make code that is less reliant on other code
+
+Interfacing:
+Simply a requirements lists that is implemented on each class that belongs to that Interface.
+This means each class must define those methods and fields within itself.
+Multiple Interfaces can be implemented, with this be sure to define inheritance first.
+    public classs Ostritch: Bird, CanRun => (Inheritance), (Interface)
+
+Linq Methods: Language Integrated Query can be run on anything that is Ienumerable
+
+Sidebar:
+T is like any arg as arg
+<T> as a parameter means accept any collection of items and return
+that collection of items.
+
 Get Set OOP
 
 private _numPassengers = 5;
