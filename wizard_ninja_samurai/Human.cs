@@ -9,9 +9,9 @@ public class Human
     public int intelligence { get; set; }
     public int dexterity { get; set; }
 
-    public Human(string name)
+    public Human(string person)
     {
-        name = name;
+        name = person;
         strength = 3;
         intelligence = 3;
         dexterity = 3;

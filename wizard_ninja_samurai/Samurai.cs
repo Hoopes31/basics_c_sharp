@@ -3,12 +3,14 @@ using System.Threading;
 public class Samurai: Human
 {
     public static int numberOfSamuria = 0;
+    //Alternative public static int count = 0;
     new public string name;
     new public int health;
     public Samurai(string name): base(name)
     {
         health = 200;
         Interlocked.Increment(ref numberOfSamuria);
+        //Alternative count++;
     }
     public void death_blow(object obj)
     {
@@ -28,7 +30,7 @@ public class Samurai: Human
     {
         health = 100;
     }
-    public static int how_many()
+    public int how_many()
     {
         return numberOfSamuria;
     }

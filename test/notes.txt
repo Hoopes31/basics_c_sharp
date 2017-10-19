@@ -1,0 +1,16 @@
+1. Create a test folder parallel to your project that will be tested
+    CLI => mkdir test
+    CLI => cd test
+    CLI => dotnet new xunit
+2. Create a reference to the parallel project so the test may speak with
+the project
+    CLI => dotnet add reference <path to project .csproj>
+    CLI => cd test
+    CLI => dotnet restore
+3. Begin writing tests in UnitTest1.cs
+    EDITOR => using <program name>;
+    EDITOR => name your test1() method appropriately
+    EDITOR => write assertions
+    CLI => dotnet test
+
+Optional: Adjust output with: https://xunit.github.io/docs/capturing-output.html
