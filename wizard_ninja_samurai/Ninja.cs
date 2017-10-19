@@ -1,6 +1,6 @@
 public class Ninja: Human
 {
-    public string name;
+    new public string name;
     new public int dexterity { get; set; }
     public Ninja(string name):base(name)
     {

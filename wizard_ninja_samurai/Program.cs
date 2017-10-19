@@ -6,7 +6,6 @@ namespace wizard_ninja_samurai
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }
