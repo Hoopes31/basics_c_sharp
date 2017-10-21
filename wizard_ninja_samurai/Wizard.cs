@@ -1,7 +1,7 @@
 using System;
 public class Wizard : Human
 {
-    public string name;
+    new public string name;
     //new keyword is purposefully hides the inherited property in the base class.
     new public int intelligence { get; set; }
     new public int health { get; set; }
