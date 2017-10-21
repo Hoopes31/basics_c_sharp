@@ -80,7 +80,6 @@ artifacts/
 *obj/
 
 # dotnet mvc
-*/wwwroot/
 
 # Chutzpah Test files
 _Chutzpah*
