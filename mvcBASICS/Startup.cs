@@ -49,6 +49,7 @@ namespace mvcBASICS
             app.UseStaticFiles();
 
             //This is our route setup! Weeeee!
+            //Be sure to add your routes to the controller!
             app.UseMvc();
         }
     }

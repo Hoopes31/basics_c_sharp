@@ -8,6 +8,7 @@ namespace mvcBASICS{
     
         [HttpGet] //Whaaaaat add the get route on the controller! Woo!
         [Route("index")] //This is the route! Note no leading slashes!
+
         public string index()
         {
             return "Hello World";
