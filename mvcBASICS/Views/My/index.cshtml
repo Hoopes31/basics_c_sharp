@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Contact";
+}
+<body>
+<h1>My Route</h1>
+<!-- TEMPLATE RENDERING -->
+<h2>@ViewData["Title"].</h2>
+    @{
+        var StringList = new List<string>{
+                                "one",
+                                "two",
+                                "three",
+                                "four"
+                            };
+        
+        foreach(var word in StringList)
+        {
+            // We can render HTML from within C# code!
+            <p>@word</p>
+        }
+    }
+</body>

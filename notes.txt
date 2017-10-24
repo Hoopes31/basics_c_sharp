@@ -91,3 +91,20 @@ Dictionaries
 {
  Console.WriteLine(entry.Key + " - " + entry.Value);
 }
+
+Persisting Data MVC:
+ViewBag.variableName = "Variable";
+front end=> @ViewBag.variableName
+
+Requires Session =>
+Temp Data is for passing data from one method to another method
+NOT FRONTEND
+TempData["VariableName"] = "Variable";
+another route => TempData["VariableName"];
+
+HttpContext.Session.setString(key, value);
+HttpContext.Session.getString(key, value);
+
+HttpContext.Session.SetInt32(key, int);
+HttpContext.Session.GetInt32(key, int);
+

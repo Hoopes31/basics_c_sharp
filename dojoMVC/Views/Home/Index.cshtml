@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="col-md-12">
+    <h2>Run &amp; Deploy</h2>
+    <form action="survey" method="post">
+        <input type="text" placeholder="Your Name" name="name">
+        <select name="location">
+            <option value="Seattle">Seattle</option>
+            <option value="LA">LA</option>
+            <option value="NYC">NYC</option>
+            <option value="Tokyo">Tokyo</option>
+        </select>
+        <select name="language">
+            <option value="Python">Python</option>
+            <option value="Javascript">Javascript</option>
+            <option value="C#">C#</option>
+            <option value="C">C</option>
+        <input type="textarea" placeholder="Comment (optional)" name="comment">
+        <button type="submit" value="Submit">Submit</button>
+    </form>
+</div>

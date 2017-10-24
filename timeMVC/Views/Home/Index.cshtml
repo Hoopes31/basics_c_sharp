@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Time";
+    DateTime time = DateTime.Now;
+    string formatDate = "MMM d yyyy";
+    string formatTime = "hh:mm:ss tt";
+}
+<div class="row">
+    <div class="col-md-3">
+        <h2>The current date and time:</h2>
+        <h3>@time.ToString(formatDate)</h3>
+        <h3>@time.ToString(formatTime)</h3>
+    </div>
+</div>
