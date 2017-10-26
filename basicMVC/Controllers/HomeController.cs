@@ -10,29 +10,31 @@ namespace basicMVC.Controllers
 {
     public class HomeController : Controller
     {
-        public DojoChi userDojoChi;
-
         [HttpGet]
         [Route("")]
         public IActionResult Index()
         {
-            if (userDojoChi == null)
+            if (HttpContext.Session.GetObjectFromJson<DojoChi>("DojoChi") == null)
             {
                 return View("Welcome");
             }
-            ViewBag.DojoChi = userDojoChi;
+            ViewBag.DojoChi = HttpContext.Session.GetObjectFromJson<DojoChi>("DojoChi");
             return View();
         }
+        
         [HttpPost]
         [Route("addName/{name}")]
         public IActionResult AddName(string name)
         {
-            userDojoChi = new DojoChi(name);
+            HttpContext.Session.SetObjectAsJson("DojoChi", new DojoChi(name));
             return RedirectToAction("Index");
         }
-        public IActionResult Play(DojoChi userDojoChi)
+        [HttpGet]
+        [Route("play")]
+        public IActionResult Play()
         {
-            userDojoChi.Play();
+            DojoChi userDojoChi = HttpContext.Session.GetObjectFromJson<DojoChi>("DojoChi");
+            ViewBag.message = userDojoChi.Play();
             if (userDojoChi.Win())
             {
                 return View("Win!");
@@ -42,11 +44,15 @@ namespace basicMVC.Controllers
                 return View("Death!");
             }
             HttpContext.Session.SetObjectAsJson("DojoChi", userDojoChi);
-            return RedirectToAction("Index", userDojoChi);
+            ViewBag.DojoChi = HttpContext.Session.GetObjectFromJson<DojoChi>("DojoChi");
+            return View("Index");
         }
-        public IActionResult Work(DojoChi userDojoChi)
+        [HttpGet]
+        [Route("work")]
+        public IActionResult Work()
         {
-            userDojoChi.Work();
+            DojoChi userDojoChi = HttpContext.Session.GetObjectFromJson<DojoChi>("DojoChi");
+            ViewBag.message = userDojoChi.Work();
             if (userDojoChi.Win())
             {
                 return View("Win!");
@@ -56,25 +62,33 @@ namespace basicMVC.Controllers
                 return View("Death!");
             }
             HttpContext.Session.SetObjectAsJson("DojoChi", userDojoChi);
-            return RedirectToAction("Index", userDojoChi);
+            ViewBag.DojoChi = HttpContext.Session.GetObjectFromJson<DojoChi>("DojoChi");
+            return View("Index");
         }
-        public IActionResult Sleep(DojoChi userDojoChi)
+        [HttpGet]
+        [Route("sleep")]
+        public IActionResult Sleep()
         {
-            userDojoChi.Sleep();
+            DojoChi userDojoChi = HttpContext.Session.GetObjectFromJson<DojoChi>("DojoChi");
+            ViewBag.message = userDojoChi.Sleep();
             if (userDojoChi.Win())
             {
-                return View("Win!");
+                return View("Win");
             }
             if (userDojoChi.Death())
             {
-                return View("Death!");
+                return View("Death");
             }
             HttpContext.Session.SetObjectAsJson("DojoChi", userDojoChi);
-            return RedirectToAction("Index", userDojoChi);
+            ViewBag.DojoChi = HttpContext.Session.GetObjectFromJson<DojoChi>("DojoChi");
+            return View("Index");
         }
-        public IActionResult Feed(DojoChi userDojoChi)
+        [HttpGet]
+        [Route("feed")]
+        public IActionResult Feed()
         {
-            userDojoChi.Feed();
+            DojoChi userDojoChi = HttpContext.Session.GetObjectFromJson<DojoChi>("DojoChi");
+            ViewBag.message = userDojoChi.Feed();
             if (userDojoChi.Win())
             {
                 return View("Win!");
@@ -84,7 +98,8 @@ namespace basicMVC.Controllers
                 return View("Death!");
             }
             HttpContext.Session.SetObjectAsJson("DojoChi", userDojoChi);
-            return RedirectToAction("Index", userDojoChi);
+            ViewBag.DojoChi = HttpContext.Session.GetObjectFromJson<DojoChi>("DojoChi");
+            return View("Index");
         }
         [HttpPost]
         [Route("clear")]

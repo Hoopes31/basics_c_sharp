@@ -1,8 +1,20 @@
 <h1>Welcome to your Dojochi</h1>
 <h4>Get your Dojochi to 100 in all three categories for super ultimate satisfaction</h4>
 <!-- If its first visit create new instance of dojochi -->
-<form action="/clear" method="post">
-<button type="submit" value="Submit">Clear</button>
+
+<h1>Dojodachi @ViewBag.DojoChi.name Stats</h1>
+<h5>Happiness @ViewBag.DojoChi.happiness</h5>
+<h5>Fullness @ViewBag.DojoChi.fullness</h5>
+<h5>Energy @ViewBag.DojoChi.energy</h5>
+<h5>Meals @ViewBag.DojoChi.meals</h5>
+
+<h4>@ViewBag.message</h4>
+
+<form action="" method="">
+<button type="submit" formmethod="get" formaction="/play" value="Submit">Play</button>
+<button type="submit" formmethod="get" formaction="/work" value="Submit">Work</button>
+<button type="submit" formmethod="get" formaction="/sleep" value="Submit">Sleep</button>
+<button type="submit" formmethod="get" formaction="/feed" value="Submit">Feed</button>
 </form>
-<h1>@ViewBag.userDojoChi.name</h1>
+
 <!-- Show Dojochi happieness, fullness, eneergy -->

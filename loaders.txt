@@ -3,6 +3,18 @@ dotnet add package Microsoft.AspNetCore.StaticFiles -v=1.1
 dotnet add package Microsoft.AspNetCore.Session -v=1.1
 using Newtonsoft.Json;
 
+Hiding Data
+dotnet add package Microsoft.Extensions.Options.ConfigurationExtensions -v=1.1
+Startup.cs =>
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
+
+
+Server:
+
+dotnet add package MySql.Data -v 7.0.7-*
+dotnet add package System.Data.SqlClient -v 4.1.0-*
+
 In Controller: using Microsoft.AspNetCore.Http;
 In Startup: 
 => ConfigureServices

@@ -80,6 +80,8 @@ namespace creature
             if (this.fullness > 4 && this.happiness > 4)
             {
                 this.energy += 5;
+                this.fullness -= 5;
+                this.happiness -= 5;
                 return $"{this.name} got some rest but is now hungry and unhappy!";
             }
             return $"{this.name} is too hungry and depressed to sleep!";
