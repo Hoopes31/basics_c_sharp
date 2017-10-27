@@ -37,9 +37,9 @@ namespace scaffold.Controllers
                     email = model.email,    
                     password = model.password   
                 };
-                string query = $"INSERT INTO users(firstName, lastName, email, password, created_date, updated_date)" + 
-                $"VALUES('{NewUser.firstName}', '{NewUser.lastName}', '{NewUser.email}', '{NewUser.password}', NOW(), NOW())";
-                _dbConnector.Execute(query);
+                // string query = $"INSERT INTO users(firstName, lastName, email, password, created_date, updated_date)" + 
+                // $"VALUES('{NewUser.firstName}', '{NewUser.lastName}', '{NewUser.email}', '{NewUser.password}', NOW(), NOW())";
+                // _dbConnector.Execute(query);
                 return View("Welcome");
             }
             
@@ -53,7 +53,7 @@ namespace scaffold.Controllers
             {
                 string query = $"SELECT * FROM users WHERE email='{model.email}'";
                 List<Dictionary<string, object>> user = _dbConnector.Query(query);
-                return View("Profile");
+                return RedirectToAction("Index", "Wall");
             }
             return View(model);
         }

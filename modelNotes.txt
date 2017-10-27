@@ -1,0 +1,32 @@
+To Run Checks in your Controller =>
+TryValidateModel(NewUser);
+ViewBag.errors = ModelState.Values;
+
+Validators
+[Required] => 
+Validates whether the field has a value. => NA
+
+[Regular Expression] => 
+Validates whether the submitted value conforms to a regex string. A regex string.
+
+[MinLength()]	=> 
+Validates that a string or array field has the specified minimum length.	An integer.
+
+[MaxLength()]	=> 
+Validates that a string or array field has the specified maximum length.	An integer.
+
+[Range()]	=> 
+Checks whether the value is within the range specified.	Two integers or two doubles. Must be the same type as the field.
+
+[EmailAddress] =>	
+Validates that the field is in the form of a valid email address.	NA
+
+[Compare()] =>
+Validates that two fields contain the same value. 
+Only needs to be applied to one of the two fields
+A string corresponding to the name of the other field. 
+A second parameter consisting of ErrorMessage = and a string to be displayed as an error 
+may also be included.
+
+[DataType()] 	=>
+Ensures that the field conforms to a specific DataType	A DataType object

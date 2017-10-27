@@ -19,7 +19,7 @@ namespace scaffold.Controllers
         }
 
         [HttpGet]
-        [Route("")]
+        [Route("wall")]
         public IActionResult Index()
         {
             return View();
