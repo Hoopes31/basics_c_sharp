@@ -49,7 +49,20 @@ namespace scaffold.Controllers
         {
             if(ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Wall");
+                LoginModel user = new LoginModel
+                {
+                    email = model.email,
+                    password = model.password
+                };
+                User returnedUser = userFactory.Login(user);
+
+                if (returnedUser != null)
+                {
+                    if (returnedUser.password == user.password)
+                        {
+                        return RedirectToAction("Index", "Wall");
+                        }
+                }
             }
             return View(model);
         }

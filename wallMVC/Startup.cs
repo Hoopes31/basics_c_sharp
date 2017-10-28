@@ -28,9 +28,13 @@ namespace scaffold
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
+            // Add framework services to make stuff (OBJECTS and maybe more) project-able-y available
+            // Read more about dependency injection and design patterns https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection 
             services.AddMvc();
             services.AddSession();
+            // The MySqlOptions object was created in the Properties folder. 
+            // How it's related to the configure method and the Configuration.GetSection eludes
+            // Current assumption, Configuration appsettings.json for objects with ("STRING NAME")
             services.Configure<MySqlOptions>(Configuration.GetSection("DBInfo"));
             services.AddScoped<UserFactory>();
         }

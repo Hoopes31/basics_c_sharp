@@ -51,6 +51,13 @@ namespace DbConnection
                 return dbConnection.Query<User>(query);
             }
         }
-
+        public User Login(LoginModel user)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string query = "SELECT * FROM users WHERE email = @email";
+                return dbConnection.Query<User>(query, user).FirstOrDefault();
+            }
+        }
     }
 }

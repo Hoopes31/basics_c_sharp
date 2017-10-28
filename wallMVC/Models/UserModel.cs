@@ -1,4 +1,3 @@
-using System;
 namespace scaffold.Models
 {
     public class User : BaseEntity

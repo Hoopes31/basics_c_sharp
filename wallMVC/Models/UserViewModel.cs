@@ -21,6 +21,7 @@ namespace scaffold.Models
         public string password {get;set;}
         [Required]
         [MinLength(8)]
+        [DataType(DataType.Password)]
         [Compare("password", ErrorMessage = "Password and confirmation must match.")]
         public string passwordConfirm{get;set;}
     }
