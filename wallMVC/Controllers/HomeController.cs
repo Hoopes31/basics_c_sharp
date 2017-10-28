@@ -7,15 +7,15 @@ using System.Collections.Generic;
 using scaffold.Models;
 using DbConnection;
 
+
 namespace scaffold.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly DbConnector _dbConnector;
- 
-        public HomeController(DbConnector connect)
+        private readonly UserFactory userFactory;
+        public HomeController(UserFactory connect)
         {
-            _dbConnector = connect;
+            userFactory = connect;
         }
 
         [HttpGet]
@@ -37,9 +37,7 @@ namespace scaffold.Controllers
                     email = model.email,    
                     password = model.password   
                 };
-                string query = $"INSERT INTO users(firstName, lastName, email, password, created_date, updated_date)" + 
-                $"VALUES('{NewUser.firstName}', '{NewUser.lastName}', '{NewUser.email}', '{NewUser.password}', NOW(), NOW())";
-                _dbConnector.Execute(query);
+                userFactory.AddNewUser(NewUser);
                 return View("Welcome");
             }
             
@@ -51,8 +49,6 @@ namespace scaffold.Controllers
         {
             if(ModelState.IsValid)
             {
-                string query = $"SELECT * FROM users WHERE email='{model.email}'";
-                List<Dictionary<string, object>> user = _dbConnector.Query(query);
                 return RedirectToAction("Index", "Wall");
             }
             return View(model);
@@ -62,8 +58,14 @@ namespace scaffold.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            // List<Dictionary<string, object>> AllUsers = DbConnector.Query("SELECT * FROM users");
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        [Route("get_all")]
+        public IActionResult GetAllUsers()
+        {
+            ViewBag.Users = userFactory.GetAllUsers();
+            return View();
         }
     }
 

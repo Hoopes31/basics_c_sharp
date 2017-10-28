@@ -11,12 +11,8 @@ namespace scaffold.Controllers
 {
     public class WallController : Controller
     {
-        private readonly DbConnector _dbConnector;
  
-        public WallController(DbConnector connect)
-        {
-            _dbConnector = connect;
-        }
+        public WallController(){}
 
         [HttpGet]
         [Route("wall")]
