@@ -27,10 +27,10 @@ namespace DbConnection
         {
             using(IDbConnection dbConnection = Connection)
             {
-                string query = "INSERT INTO users(first_name, last_name, email, password, created_date, updated_date)" +
-                               "VALUES (@firstName, @lastName, @email, @password, NOW(), NOW()";
+                string query = "INSERT INTO users (first_name, last_name, email, password, created_date, updated_date)" +
+                               "VALUES (@firstName, @lastName, @email, @password, NOW(), NOW())";
                 dbConnection.Open();
-                dbConnection.Execute(query);
+                dbConnection.Execute(query, user);
             }
         }
         public User FindById(int id)
