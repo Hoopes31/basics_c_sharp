@@ -34,18 +34,19 @@ namespace scaffold.Controllers
         [Route("add_message")]
         public IActionResult AddMessage(MessageViewModel model)
         {
-            System.Console.WriteLine("Attempting to send a message...");
                 if(ModelState.IsValid)
                 {
-                    int id = (int)HttpContext.Session.GetInt32("id");
-                    MessageModel newMessage = new MessageModel
-                    {
-                        body = model.body
-                    };
-                    // User user = userFactory.FindById(id);
-                    messageFactory.AddNewMessage(newMessage, id);
-                RedirectToAction("Index");
+                // {
+                //     int id = (int)HttpContext.Session.GetInt32("id");
+                //     MessageModel newMessage = new MessageModel
+                //     {
+                //         body = model.body
+                //     };
+                //     // User user = userFactory.FindById(id);
+                //     messageFactory.AddNewMessage(newMessage, id);
+                return RedirectToAction("Index");
             }
+            //Find a way to make the AddMessage Syntax match the controller call.
             return View(model);
         }
         [HttpPost]

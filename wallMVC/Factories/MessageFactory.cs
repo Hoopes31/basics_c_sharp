@@ -51,7 +51,7 @@ namespace DbConnection
                                "JOIN users ON messages.users_id " + 
                                "WHERE users.id = messages.users_id";
                 dbConnection.Open();
-                var data = dbConnection.Query<MessageModel, User, MessageModel>(query, (messages, user) => {messages.user = user; return messages;});
+                var data = dbConnection.Query<MessageModel, User, MessageModel>(query, (messages, user) => {messages.user = user; return messages;}).OrderBy(message => message.created_date);
                 return data;
             }
         }

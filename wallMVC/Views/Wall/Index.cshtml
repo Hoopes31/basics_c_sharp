@@ -3,14 +3,14 @@
 <h1>Wall</h1>
 <h3>Post a Message!</h3>
 <div>
-    @Html.Partial("AddMessagePartial")
+    @Html.Partial("AddMessage")
 </div>
 @{
     foreach (var message in ViewBag.Messages)
     {
         <br>
-            <p class="text-danger">@message.body</p>
-            <p class="text-primary">@message.user.first_name</p>
+            <p>"@message.body"</p>
+            <p class="text-primary">-@message.user.first_name</p>
         <hr>
     }
 }
