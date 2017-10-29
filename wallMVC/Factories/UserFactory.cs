@@ -25,10 +25,10 @@ namespace DbConnection
         //This method runs a query and stores the response in a list of dictionary records
         public void AddNewUser(User user)
         {
-            using(IDbConnection dbConnection = Connection)
+            using (IDbConnection dbConnection = Connection)
             {
                 string query = "INSERT INTO users (first_name, last_name, email, password, created_date, updated_date)" +
-                               "VALUES (@firstName, @lastName, @email, @password, NOW(), NOW())";
+                               "VALUES (@first_name, @last_name, @email, @password, NOW(), NOW())";
                 dbConnection.Open();
                 dbConnection.Execute(query, user);
             }

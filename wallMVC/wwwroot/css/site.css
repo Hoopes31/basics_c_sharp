@@ -35,3 +35,8 @@ textarea {
         display: none;
     }
 }
+
+.message{
+    display: inline-block;
+    font: red;
+}

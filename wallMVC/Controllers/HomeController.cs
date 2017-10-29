@@ -4,9 +4,12 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 using scaffold.Models;
 using DbConnection;
-
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace scaffold.Controllers
 {
@@ -32,8 +35,8 @@ namespace scaffold.Controllers
             {
                 User NewUser = new User
                 {
-                    firstName = model.firstName,    
-                    lastName = model.lastName,    
+                    first_name = model.first_name,    
+                    last_name = model.last_name,    
                     email = model.email,    
                     password = model.password   
                 };
@@ -59,9 +62,10 @@ namespace scaffold.Controllers
                 if (returnedUser != null)
                 {
                     if (returnedUser.password == user.password)
-                        {
+                    {
+                        HttpContext.Session.SetInt32("id", returnedUser.id);
                         return RedirectToAction("Index", "Wall");
-                        }
+                    }
                 }
             }
             return View(model);

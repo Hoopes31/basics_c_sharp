@@ -1,0 +1,10 @@
+@model scaffold.Models.MessageViewModel
+
+<form asp-controller="Wall" asp-action="AddMessage" method="post">
+    <br>
+    <span asp-validation-for="body"></span>
+    <input asp-for="body" placeholder="Enter a Message" class="form-control"/>
+    <br>
+    <button type="submit">Post</button>
+    <hr>
+</form>   

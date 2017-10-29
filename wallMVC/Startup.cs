@@ -37,6 +37,7 @@ namespace scaffold
             // Current assumption, Configuration appsettings.json for objects with ("STRING NAME")
             services.Configure<MySqlOptions>(Configuration.GetSection("DBInfo"));
             services.AddScoped<UserFactory>();
+            services.AddScoped<MessageFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
