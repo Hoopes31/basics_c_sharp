@@ -6,5 +6,7 @@ namespace scaffold.Models
     {
         public string body {get;set;}
         public User user {get;set;}
+        public CommentModel comment {get;set;}
+        public int id {get;set;}
     }
 }

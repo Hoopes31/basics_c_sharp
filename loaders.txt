@@ -29,6 +29,11 @@ string sessionStr = HttpContext.Session.GetString("KeyName");
 HttpContext.Session.SetInt32("KeyName", Int);
 int? sessionInt = HttpContext.Session.GetInt32("KeyName");
 
+ENTITY FRAMEWORK CORE:
+For...
+dotnet add package MySql.Data.EntityFrameworkCore -v 7.0.7-*
+
+
 JSON:
 session.SetString(key, JsonConvert.SerializeObject(value);
 string jsonValue = session.GetString(key)

@@ -1,0 +1,9 @@
+@model scaffold.Models.CommentViewModel
+
+<form asp-controller="Wall" asp-action="AddComment" method="post">
+    <br>
+    <span asp-validation-for="body"></span>
+    <input asp-for="body" placeholder="Enter a comment" class="form-control"/>
+    <br>
+    <button type="submit">Comment</button>
+</form>
