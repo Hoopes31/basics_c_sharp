@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Linq;
-using DbConnection;
+using entity_learn.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using MySQL.Data.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MySQL.Data.EntityFrameworkCore.Extensions;
 
-namespace scaffold
+namespace entity_learn
 {
     public class Startup
     {
@@ -17,7 +19,7 @@ namespace scaffold
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -29,8 +31,7 @@ namespace scaffold
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.Configure<MySqlOptions>(Configuration.GetSection("DBInfo"));
-            services.AddScoped<DbConnector>();
+            services.AddDbContext<LearnContext>(options => options.UseMySQL(Configuration["DBInfo:ConnectionString"]));
             services.AddSession();
             services.AddMvc();
         }
