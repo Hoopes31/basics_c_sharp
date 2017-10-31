@@ -60,8 +60,14 @@ namespace DbConnection
                                "JOIN users ON messages.users_id " + 
                                "WHERE users.id = messages.users_id";
                 dbConnection.Open();
-                var data = dbConnection.Query<MessageModel, User, MessageModel>(query, (messages, user) => {messages.user = user; return messages;}).OrderBy(message => message.created_date);
-                return data;
+                var all_messages = dbConnection.Query<MessageModel, User, MessageModel>(query, (messages, user) => {messages.user = user; return messages;}).OrderBy(message => message.created_date);
+
+                foreach (var message in all_messages) {
+                    query = $"SELECT * FROM comments WHERE comments.messages_id = {message.id}";
+                    var comments = dbConnection.Query<CommentModel>(query).ToList();
+                    message.comments = comments;
+                }
+                return all_messages;
             }
         }
     }

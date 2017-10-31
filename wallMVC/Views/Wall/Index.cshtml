@@ -3,17 +3,21 @@
 <h1>Wall</h1>
 <h3>Post a Message!</h3>
 <div>
-    @Html.Partial("AddMessage", (MessageViewModel)@ViewBag.MesssageForm)
+    @Html.Partial("AddMessage")
 </div>
 @{
     foreach (var message in ViewBag.Messages)
     {
         CommentViewModel Form = ViewBag.CommentForm;
         Form.message_id = message.id;
-        <p>@Form.message_id</p>
         <br>
         <p>"@message.body"</p>
         <p class="text-primary">-@message.user.first_name @message.updated_date</p>
+        
+        @foreach (var comment in message.comments) 
+        {
+            <p>@comment.body</p>
+        }
         @Html.Partial("AddComment", Form)
         <hr>
     }

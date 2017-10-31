@@ -32,6 +32,7 @@ namespace scaffold.Controllers
             ViewBag.CommentForm = new CommentViewModel();
             return View();
         }
+        
         [HttpPost]
         [Route("add_message")]
         public IActionResult AddMessage(MessageViewModel model)
