@@ -48,7 +48,7 @@ namespace DbConnection
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                string query = $"INSERT INTO comments (body, users_id, messages_id, created_date, updated_date) VALUES (@body, {id}, @messageId, NOW(), NOW())";
+                string query = $"INSERT INTO comments (body, users_id, messages_id, created_date, updated_date) VALUES (@body, {id}, @message_id, NOW(), NOW())";
                 dbConnection.Execute(query, comment);
             }
         }

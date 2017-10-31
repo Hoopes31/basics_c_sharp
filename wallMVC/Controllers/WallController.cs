@@ -28,6 +28,8 @@ namespace scaffold.Controllers
         public IActionResult Index()
         {
             ViewBag.Messages = messageFactory.GetAllMessages();
+            ViewBag.MessageForm = new MessageViewModel();
+            ViewBag.CommentForm = new CommentViewModel();
             return View();
         }
         [HttpPost]
@@ -53,13 +55,13 @@ namespace scaffold.Controllers
         {
             if(ModelState.IsValid)
                 {
-                    // int id = (int)HttpContext.Session.GetInt32("id");
-                    // CommentModel newComment = new CommentModel
-                    // {
-                    //     body = model.body
-                    // };
-                    // messageFactory.AddNewComment(newComment, id);
-                    System.Console.WriteLine(model.message_id);
+                    int id = (int)HttpContext.Session.GetInt32("id");
+                    CommentModel newComment = new CommentModel
+                    {
+                        body = model.body,
+                        message_id = model.message_id
+                    };
+                    messageFactory.AddNewComment(newComment, id);
                 return RedirectToAction("Index");
             }
             //Find a way to make the AddMessage Syntax match the controller call.

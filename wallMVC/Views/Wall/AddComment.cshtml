@@ -1,6 +1,7 @@
 @model scaffold.Models.CommentViewModel
 
 <form asp-controller="Wall" asp-action="AddComment" method="post">
+    <input type="hidden" asp-for="message_id" value=@Model.message_id/>
     <br>
     <span asp-validation-for="body"></span>
     <input asp-for="body" placeholder="Enter a comment" class="form-control"/>
