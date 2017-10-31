@@ -36,14 +36,12 @@ namespace scaffold.Controllers
         {
                 if(ModelState.IsValid)
                 {
-                // {
-                //     int id = (int)HttpContext.Session.GetInt32("id");
-                //     MessageModel newMessage = new MessageModel
-                //     {
-                //         body = model.body
-                //     };
-                //     // User user = userFactory.FindById(id);
-                //     messageFactory.AddNewMessage(newMessage, id);
+                    int id = (int)HttpContext.Session.GetInt32("id");
+                    MessageModel newMessage = new MessageModel
+                    {
+                        body = model.body
+                    };
+                    messageFactory.AddNewMessage(newMessage, id);
                 return RedirectToAction("Index");
             }
             //Find a way to make the AddMessage Syntax match the controller call.
@@ -51,10 +49,21 @@ namespace scaffold.Controllers
         }
         [HttpPost]
         [Route("add_comment")]
-        public IActionResult AddComment()
+        public IActionResult AddComment(CommentViewModel model)
         {
-            // List<Dictionary<string, object>> AllUsers = DbConnector.Query("SELECT * FROM users");
-            return View();
+            if(ModelState.IsValid)
+                {
+                    // int id = (int)HttpContext.Session.GetInt32("id");
+                    // CommentModel newComment = new CommentModel
+                    // {
+                    //     body = model.body
+                    // };
+                    // messageFactory.AddNewComment(newComment, id);
+                    System.Console.WriteLine(model.message_id);
+                return RedirectToAction("Index");
+            }
+            //Find a way to make the AddMessage Syntax match the controller call.
+            return View(model);
         }
     }
 

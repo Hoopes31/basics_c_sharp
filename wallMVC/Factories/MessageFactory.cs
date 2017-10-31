@@ -38,9 +38,18 @@ namespace DbConnection
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                string queryMessage = $"INSERT INTO messages (body, users_id, created_date, updated_date) VALUES (@body, {id}, NOW(), NOW())";
-                dbConnection.Execute(queryMessage, message);
-                System.Console.WriteLine("Message Added!");
+                string query = $"INSERT INTO messages (body, users_id, created_date, updated_date) VALUES (@body, {id}, NOW(), NOW())";
+                dbConnection.Execute(query, message);
+            }
+        }
+        public void AddNewComment(CommentModel comment, int id)
+        {
+            // Method uses established internal connection
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                string query = $"INSERT INTO comments (body, users_id, messages_id, created_date, updated_date) VALUES (@body, {id}, @messageId, NOW(), NOW())";
+                dbConnection.Execute(query, comment);
             }
         }
         public IEnumerable<MessageModel> GetAllMessages()
