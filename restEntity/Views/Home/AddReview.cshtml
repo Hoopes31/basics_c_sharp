@@ -13,7 +13,7 @@
     <input type="text" placeholder="Review" asp-for="review" class="form-control"/>
     <label asp-for="date_visited">Date Visited:</label>
     <span asp-validation-for="date_visited"></span>
-    <input type="date" asp-for="date_visited" class="form-control" max="@DateTime.Now"/>
+    <input type="date" asp-for="date_visited" class="form-control"/>
     <label asp-for="stars">Stars:</label>
     <span asp-validation-for="stars"></span>
     <select asp-for="stars" class="form-control">
