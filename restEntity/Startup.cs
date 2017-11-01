@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using DbConnection;
 using System.Threading.Tasks;
 using restEntity.Models;
 using System.Collections.Generic;
@@ -33,7 +32,6 @@ namespace restEntity
         {
             // Add framework services.
             services.AddDbContext<EntityContext>(options => options.UseMySQL(Configuration["DBInfo:ConnectionString"]));
-            services.AddScoped<DbConnector>();
             services.AddSession();
             services.AddMvc();
         }

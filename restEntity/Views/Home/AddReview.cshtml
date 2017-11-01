@@ -1,0 +1,26 @@
+@using System
+@model restEntity.Models.ReviewViewModel
+
+<form asp-controller="Home" asp-action="AddReview" method="post">
+    <input type="hidden" asp-for="restaurant" value=@ViewBag.restaurant>
+    <label asp-for="reviewer_name">Your Name:</label>
+    <span asp-validation-for="reviewer_name"></span>
+    <input type="text" placeholder="Your name" asp-for="reviewer_name" class="form-control"/>
+    <label asp-for="review">Review:</label>
+    <span asp-validation-for="review"></span>    
+    <input type="text" placeholder="Review" asp-for="review" class="form-control"/>
+    <label asp-for="date_visited">Date Visited:</label>
+    <span asp-validation-for="date_visited"></span>
+    <input type="date" asp-for="date_visited" class="form-control" max="@DateTime.Now"/>
+    <label asp-for="stars">Stars:</label>
+    <span asp-validation-for="stars"></span>
+    <select asp-for="stars" class="form-control">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+    </select>
+    <br>
+    <button type="submit">Submit</button>
+</form>

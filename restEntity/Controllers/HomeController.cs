@@ -2,26 +2,46 @@
 using System.Linq;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using restEntity.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using DbConnection;
+using Microsoft.EntityFrameworkCore;
 
 namespace restEntity.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly DbConnector _dbConnector;
+        private EntityContext _context;
  
-        public HomeController(DbConnector connect)
+        public HomeController(EntityContext context)
         {
-            _dbConnector = connect;
+            _context = context;
         }
         
         [HttpGet]
         [Route("")]
         public IActionResult Index()
         {
+            List<Restaurant> all_restaurants = _context.Restaurants.OrderBy(restaurant => restaurant.name).ToList();
+            ViewBag.restaurants = all_restaurants;
             return View();
+        }
+        [HttpGet]
+        [Route("review")]
+        public IActionResult Review(string restaurant)
+        {
+            ViewBag.restaurant = restaurant;
+            return View();
+        }
+        [HttpPost]
+        [Route("add_review")]
+        public IActionResult AddReview(ReviewViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                System.Console.WriteLine("work it");
+            }
+            return View(model);
         }
     }
 
