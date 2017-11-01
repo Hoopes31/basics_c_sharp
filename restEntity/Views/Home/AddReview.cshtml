@@ -1,6 +1,8 @@
 @using System
 @model restEntity.Models.ReviewViewModel
 
+<h1>Review @ViewBag.restaurant</h1>
+
 <form asp-controller="Home" asp-action="AddReview" method="post">
     <input type="hidden" asp-for="restaurant" value=@ViewBag.restaurant>
     <label asp-for="reviewer_name">Your Name:</label>
