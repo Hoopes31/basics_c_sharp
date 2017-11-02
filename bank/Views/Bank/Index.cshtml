@@ -1,8 +1,22 @@
+@using scaffold.Models
+
 <h1>Welcome to the BANK</h1>
-<h2>@ViewBag.name</h2>
-<div class="col-md-6">
-    
-</div>
-<div class="col-md-6">
-    @ViewBag.balance
+<div class="row">
+    <div class="col-md-5">
+        <h4>@ViewBag.user</h4>    
+    </div>
+    <div class="col-md-5">
+        <h4>Current Balance: @ViewBag.balance</h4>
+    </div>
+    <div class="col-md-12">
+        @Html.Partial("Transaction")
+    </div>
+    <div class="col-md-12">
+        @{
+            foreach (var transaction in @ViewBag.transactions)
+            {
+                <p>@transaction.amount.ToString("C") -- @transaction.created_date</p> 
+            }
+        }
+    </div>
 </div>

@@ -34,7 +34,6 @@ namespace scaffold.Controllers
         [Route("register")]
         public IActionResult Register(UserViewModel model)
         {
-            System.Console.WriteLine("Check");
             if(ModelState.IsValid)
             {
                 PasswordHasher<User> hasher = new PasswordHasher<User>();
@@ -48,9 +47,22 @@ namespace scaffold.Controllers
                     updated_date = DateTime.Now
                 };
                 newUser.password = hasher.HashPassword(newUser, newUser.password);
+                _context.Add(newUser);
+                _context.SaveChanges();
+
+                User user = _context.Users.SingleOrDefault(u => u.email == model.email);
+                HttpContext.Session.SetInt32("id", newUser.id);
+
+                Account newAccount = new Account
+                {
+                    balance = 0,
+                    UserId = user.id,
+                    created_date = DateTime.Now,
+                    updated_date = DateTime.Now
+                };
 
                 //Save new user
-                _context.Add(newUser);
+                _context.Add(newAccount);
                 _context.SaveChanges();
 
                 return RedirectToAction("Index", "Bank");
@@ -65,14 +77,14 @@ namespace scaffold.Controllers
             if(ModelState.IsValid)
             {
                 //Get user
-                User user = _context.Users.SingleOrDefault(foundUser => foundUser.email == model.email);
+                User User = _context.Users.SingleOrDefault(user => user.email == model.email);
 
-                if (user != null && model.password != null)
+                if (User != null && model.password != null)
                 {
                     var Hasher = new PasswordHasher<User>();
-                    if(0 != Hasher.VerifyHashedPassword(user, user.password, model.password))
+                    if(0 != Hasher.VerifyHashedPassword(User, User.password, model.password))
                     {
-                        HttpContext.Session.SetInt32("id", user.id);
+                        HttpContext.Session.SetInt32("id", User.id);
                         return RedirectToAction("Index", "Bank");
                     }
                 }
