@@ -1,0 +1,7 @@
+@model scaffold.Models.LikeViewModel
+
+<form asp-controller="Wall" asp-action="Like" method="post">
+    <input type="hidden" asp-for="message_id" value=@Model.message_id/>
+    <br>
+    <button class="btn btn-link" type="submit">Like</button>
+</form>

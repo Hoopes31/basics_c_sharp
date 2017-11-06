@@ -37,9 +37,10 @@ namespace DbConnection
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string query = $"SELECT * FROM users WHERE id = {id}";
+                string query = $"SELECT * FROM users WHERE id = '{id}'";
                 dbConnection.Open();
-                return dbConnection.Query<User>(query).FirstOrDefault();
+                var user = dbConnection.Query<User>(query).FirstOrDefault();
+                return user;
             }
         }
         public IEnumerable<User> GetAllUsers()

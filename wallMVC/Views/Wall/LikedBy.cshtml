@@ -1,0 +1,24 @@
+<h1>Bright Ideas Message</h1>
+    <h3>"@ViewBag.Message.body"</h3>
+    <br>
+    <h4>People who like this post:</h4>
+    <br>
+    <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var like in @ViewBag.Message.likes)
+    {
+    <tr>
+        <th scope="row"><a asp-controller="Wall" asp-action="Profile" asp-route-profileId="@like.user.id">@like.user.first_name</a></th>
+        <td>@like.user.first_name</td>
+        <td>@like.user.last_name</td>
+    </tr>
+    }
+</tbody>
+</table>

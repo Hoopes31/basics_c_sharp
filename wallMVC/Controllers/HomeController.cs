@@ -41,7 +41,7 @@ namespace scaffold.Controllers
                     password = model.password   
                 };
                 userFactory.AddNewUser(NewUser);
-                return View("Welcome");
+                return RedirectToAction("Index", "Wall");
             }
             
             return View(model);

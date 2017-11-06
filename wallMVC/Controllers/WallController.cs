@@ -22,14 +22,14 @@ namespace scaffold.Controllers
             messageFactory = connectMessage;
             userFactory = connectUser;
         }
-        //Show All Messages & Comments
+        //Show All Messages & likes
         [HttpGet]
         [Route("wall")]
         public IActionResult Index()
         {
             ViewBag.Messages = messageFactory.GetAllMessages();
             ViewBag.MessageForm = new MessageViewModel();
-            ViewBag.CommentForm = new CommentViewModel();
+            ViewBag.LikeForm = new LikeViewModel();
             return View();
         }
         
@@ -51,22 +51,48 @@ namespace scaffold.Controllers
             return View(model);
         }
         [HttpPost]
-        [Route("add_comment")]
-        public IActionResult AddComment(CommentViewModel model)
+        [Route("like")]
+        public IActionResult Like(LikeViewModel model)
         {
-            if(ModelState.IsValid)
+            //Check if like is already registered in system
+            int id = (int)HttpContext.Session.GetInt32("id");
+            if(ModelState.IsValid && messageFactory.CheckLikes(model.message_id, id) == null)
                 {
-                    int id = (int)HttpContext.Session.GetInt32("id");
-                    CommentModel newComment = new CommentModel
+                    LikeModel newLike = new LikeModel
                     {
-                        body = model.body,
                         message_id = model.message_id
                     };
-                    messageFactory.AddNewComment(newComment, id);
-                return RedirectToAction("Index");
+                    messageFactory.LikePost(newLike, id);
             }
-            //Find a way to make the AddMessage Syntax match the controller call.
-            return View(model);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        [Route("liked_by")]
+        public IActionResult LikedBy(int message_id)
+        {
+            //Get message and message likers
+            ViewBag.Message = messageFactory.GetMessage(message_id);
+            return View();
+        }
+        [HttpGet]
+        [Route("profile")]
+        public IActionResult Profile(int profileId)
+        {
+            System.Console.WriteLine(profileId);
+
+            var profile = userFactory.FindById(profileId);
+
+            if (profile != null)
+            {
+                ViewBag.first_name = profile.first_name;
+                ViewBag.last_name = profile.last_name;
+                ViewBag.email = profile.email;
+                ViewBag.info = messageFactory.UsersMessages(profileId);
+            }
+            else {
+                System.Console.WriteLine("NO");
+            }
+            return View();
         }
     }
 

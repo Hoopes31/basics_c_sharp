@@ -2,10 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace scaffold.Models
 {
-    public class CommentViewModel : BaseEntity
+    public class LikeViewModel : BaseEntity
     {
         [Required]
-        public string body {get;set;}
         public int message_id {get;set;}
     }
 }
